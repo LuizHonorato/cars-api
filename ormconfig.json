@@ -1,0 +1,16 @@
+{
+  "name": "mongo",
+  "type": "mongodb",
+  "host": "localhost",
+  "port": 27017,
+  "username": "admin",
+  "password": "admin",
+  "database": "cars",
+  "useUnifiedTopology": true,
+  "extra": {
+    "authSource": "admin"
+  },
+  "entities": [
+      "./src/modules/**/infra/typeorm/schemas/*.ts"
+  ]
+}
