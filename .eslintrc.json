@@ -28,6 +28,7 @@
       "camelcase": "off",
       "no-shadow": "off",
       "@typescript-eslint/no-shadow": ["error"],
+      "class-methods-use-this": "off",
       "import/extensions": [
         "error",
         "ignorePackages",
