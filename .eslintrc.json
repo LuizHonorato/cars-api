@@ -25,6 +25,9 @@
     "rules": {
       "prettier/prettier": "error",
       "no-console": "off",
+      "camelcase": "off",
+      "no-shadow": "off",
+      "@typescript-eslint/no-shadow": ["error"],
       "import/extensions": [
         "error",
         "ignorePackages",
