@@ -2,7 +2,7 @@ import ICreateCarDTO from '@modules/cars/dtos/ICreateCarDTO';
 import IFindAllCarsDTO from '@modules/cars/dtos/IFindAllCarsDTO';
 import ICarsRepository from '@modules/cars/repositories/ICarsRepository';
 import { ObjectID } from 'mongodb';
-import { getConnection, getMongoRepository, MongoRepository } from 'typeorm';
+import { getMongoRepository, MongoRepository } from 'typeorm';
 import Car from '../schemas/Car';
 
 class CarsRepository implements ICarsRepository {

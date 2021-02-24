@@ -8,7 +8,7 @@ export enum Exchange {
 @Entity('cars')
 class Car {
   @ObjectIdColumn()
-  id: ObjectID;
+  id: ObjectID | string;
 
   @Column()
   brand: string;
