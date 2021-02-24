@@ -44,4 +44,35 @@ carsRouter.post(
   carsController.create,
 );
 
+carsRouter.get(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+  }),
+  carsController.show,
+);
+
+carsRouter.put(
+  '/:id',
+  celebrate({
+    [Segments.PARAMS]: {
+      id: Joi.string().required(),
+    },
+    [Segments.BODY]: {
+      brand: Joi.string().required(),
+      model: Joi.string().required(),
+      version: Joi.string().required(),
+      sale_price: Joi.number().required(),
+      year: Joi.number().required(),
+      mileage: Joi.number().required(),
+      exchange_type: Joi.string().required(),
+    },
+  }),
+  carsController.update,
+);
+
+carsRouter.delete('/:id', carsController.delete);
+
 export default carsRouter;

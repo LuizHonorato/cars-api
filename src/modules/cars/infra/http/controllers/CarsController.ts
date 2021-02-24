@@ -3,6 +3,9 @@ import { container } from 'tsyringe';
 
 import FindAllCarsService from '@modules/cars/services/FindAllCarsService';
 import CreateCarService from '@modules/cars/services/CreateCarService';
+import ShowCarService from '@modules/cars/services/ShowCarService';
+import UpdateCarService from '@modules/cars/services/UpdateCarService';
+import DeleteCarService from '@modules/cars/services/DeleteCarService';
 
 class CarsController {
   async index(request: Request, response: Response): Promise<Response> {
@@ -71,6 +74,54 @@ class CarsController {
     });
 
     return response.json(car);
+  }
+
+  async show(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const showCar = container.resolve(ShowCarService);
+
+    const car = await showCar.execute({ id });
+
+    return response.json(car);
+  }
+
+  async update(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+    const {
+      brand,
+      model,
+      version,
+      year,
+      mileage,
+      exchange_type,
+      sale_price,
+    } = request.body;
+
+    const updateCar = container.resolve(UpdateCarService);
+
+    const car = await updateCar.execute({
+      id,
+      brand,
+      model,
+      version,
+      year,
+      mileage,
+      exchange_type,
+      sale_price,
+    });
+
+    return response.json(car);
+  }
+
+  async delete(request: Request, response: Response): Promise<Response> {
+    const { id } = request.params;
+
+    const deleteCar = container.resolve(DeleteCarService);
+
+    await deleteCar.execute({ id });
+
+    return response.status(204).json();
   }
 }
 

@@ -144,14 +144,7 @@ class CarsRepository implements ICarsRepository {
   }
 
   async delete(id: string): Promise<void> {
-    const objectId = new ObjectID(id);
-
-    await getConnection()
-      .createQueryBuilder()
-      .delete()
-      .from(Car)
-      .where('_id = :objectId', { objectId })
-      .execute();
+    await this.ormRepository.delete(id);
   }
 }
 
